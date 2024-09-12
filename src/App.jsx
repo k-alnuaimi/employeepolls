@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom'
 function App() {
 
   const usersArr = Object.values(users)
-  const [selecteduser,setSelectUser] = useState("")
+  const [selectedUser,setSelectUser] = useState("")
   const [loginErrorMessageVisible,setLoginErrorMessageVisible] = useState(false)
   const navigate = useNavigate();
 
@@ -24,11 +24,11 @@ function App() {
   }
   const handleLoginButton = ()=>{
 
-    if (selecteduser == ""){
+    if (selectedUser == ""){
       setLoginErrorMessageVisible(true)
     }else{
       setLoginErrorMessageVisible(false)
-      navigate("/Root",{replace:true,state:selecteduser})
+      navigate("/Root",{replace:true,state:{selectedUser}})
 
     }
 
