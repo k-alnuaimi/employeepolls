@@ -7,6 +7,8 @@ import { users } from '../src/_DATA'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+
+
 function App() {
 
   const usersArr = Object.values(users)
@@ -26,7 +28,7 @@ function App() {
       setLoginErrorMessageVisible(true)
     }else{
       setLoginErrorMessageVisible(false)
-      navigate("/Root")
+      navigate("/Root",{replace:true,state:selecteduser})
 
     }
 

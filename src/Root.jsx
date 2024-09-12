@@ -7,7 +7,7 @@ function Root() {
     return (
         <Box>
             <HStack m="5px" >
-                <ChakraLink as={ReactRouterLink} to='/Login'>
+                <ChakraLink as={ReactRouterLink} to='/'>
                     Logout
                 </ChakraLink>
             </HStack>
