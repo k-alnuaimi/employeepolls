@@ -1,11 +1,12 @@
-import { useState } from 'react'
+import { Text } from '@chakra-ui/react'
+
+import "../src/_DATA"
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      test
+      <Text>testing</Text>
     </>
   )
 }
