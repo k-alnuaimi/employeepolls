@@ -1,4 +1,4 @@
-import { Box, Link as ChakraLink, HStack } from "@chakra-ui/react"
+import { Box, Link as ChakraLink, HStack, Text } from "@chakra-ui/react"
 import { Link as ReactRouterLink, useLocation } from 'react-router-dom'
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 
@@ -10,30 +10,31 @@ function Root() {
 
     return (
         <Box>
-                  Hello  {location.state.selectedUser}   
-            <HStack m="5px" >
+                
+            <HStack m="5px" spacing={10}>
+            <Text> Hello  {location.state.selectedUser}   </Text> 
                 <ChakraLink as={ReactRouterLink} to='/'>
                     Logout
                 </ChakraLink>
-          
+              
             </HStack>
 
             <Tabs>
                 <TabList>
-                    <Tab>One</Tab>
-                    <Tab>Two</Tab>
-                    <Tab>Three</Tab>
+                    <Tab>Home</Tab>
+                    <Tab>Leaderbord</Tab>
+                    <Tab>New</Tab>
                 </TabList>
 
                 <TabPanels>
                     <TabPanel>
-                        <p>one!</p>
+                        <p>Home</p>
                     </TabPanel>
                     <TabPanel>
-                        <p>two!</p>
+                        <p>Leaderbord</p>
                     </TabPanel>
                     <TabPanel>
-                        <p>three!</p>
+                        <p>New</p>
                     </TabPanel>
                 </TabPanels>
             </Tabs>
