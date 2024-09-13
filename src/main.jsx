@@ -1,30 +1,61 @@
-import { createContext, StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import App from './App.jsx'
-import { Provider } from 'react-redux'
-import store from './store.js'
 import { Box, ChakraProvider } from '@chakra-ui/react'
+import { createRoot } from 'react-dom/client'
+import { Provider } from 'react-redux'
 import {
   createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-import Root from './Root.jsx'
+  Navigate,
+  redirect,
+  RouterProvider
+} from "react-router-dom"
+import Login from './routes/Login.jsx'
+import Root from './routes/Root.jsx'
+import store from './store.js'
+import Questions from './routes/Questions.jsx'
+import { AuthProvider } from './AuthContext.jsx'
+import { path } from 'framer-motion/client'
+import QuestionDetails from './routes/QuestionDetails.jsx'
+
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <App />,
+    path: "/Login",
+    element: <Login />,
+    index: true
   },
   {
-    path: "/Root",
+    path: "/",
     element: <Root />,
+    children: [
+
+      {
+        index: true,
+        loader: () => redirect("/questions")
+
+      },
+
+      {
+
+        path: "/questions",
+        element: <Questions />,
+        children: [{
+          path: ":question_id",
+          element: <QuestionDetails />
+        }
+
+        ]
+
+
+      },
+
+
+    ]
   },
 ]);
 
 
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  <AuthProvider>
     <Provider store={store}>
       <ChakraProvider>
         <Box minH="100vh">
@@ -33,5 +64,5 @@ createRoot(document.getElementById('root')).render(
         </Box>
       </ChakraProvider>
     </Provider>
-  </StrictMode>,
+  </AuthProvider>
 )
