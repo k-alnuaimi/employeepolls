@@ -1,4 +1,5 @@
 import { Box, Button, Text } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 const Question = ({ question }) => {
 
@@ -6,9 +7,12 @@ const Question = ({ question }) => {
     const hours = date.getHours()
     const minutes = date.getMinutes() > 9 ? date.getMinutes() : "0" + date.getMinutes()
 
+    const navigate = useNavigate()
+
     const onClickShowHandler = () => {
 
 
+        navigate(`/questions/${question.id}`, { replace: true })
 
     }
 

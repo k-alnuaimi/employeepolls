@@ -38,19 +38,33 @@ const initialState = {
         questions: ['6ni6ok3ym7mf1p33lnez', 'xj352vofupe1dqz9emx13r'],
       }
   },
-  authenticatedUser:{}
 };
 
 export const usersSlice = createSlice({
   name: "users",
   initialState,
   reducers: {
-    logout: (state, action) => {
-        state.authenticatedUser = {}
-    },
-    login: (state,action) =>{
-        state.authenticatedUser = action.payload
-    }
+    saveUserAnswer: (state, action) => {
+
+        const {authedUser,qid,answer} = action.payload
+        console.log(authedUser,qid,answer)
+        state.users = {
+          ...state.users,
+          [authedUser]: {
+            ...state.users[authedUser],
+            answers: {
+              ...state.users[authedUser].answers,
+              [qid]: answer
+            }
+          }
+        }
+
+        console.log(state.users)
+
+        
+  
+     
+      }
     
   },
 }
@@ -58,6 +72,5 @@ export const usersSlice = createSlice({
 
 
 
-export const { logout,login} = usersSlice.actions;
-
+export const {saveUserAnswer} = usersSlice.actions
 export default usersSlice.reducer;

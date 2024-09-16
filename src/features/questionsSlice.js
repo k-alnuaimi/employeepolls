@@ -93,7 +93,24 @@ export const questionSlice = createSlice({
       }
     },
     saveQuestionAnswer: (state, action) => {
-      state.tasks = state.tasks.filter((task) => task.id !== action.payload);
+
+      const {qid,answer,authedUser} = action.payload
+
+      console.log(qid,answer,authedUser)
+     
+
+      state.questions = {
+        ...state.questions,
+        [qid]: {
+          ...state.questions[qid],
+          [answer]: {
+            ...state.questions[qid][answer],
+            votes: state.questions[qid][answer].votes.concat([authedUser])
+          }
+        }
+      }
+
+      console.log(state.questions)
     },
 
     

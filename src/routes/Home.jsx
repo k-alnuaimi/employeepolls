@@ -1,20 +1,12 @@
-import { Box, Link as ChakraLink, HStack, Image, Text } from "@chakra-ui/react"
-import { Navigate, Outlet, Link as ReactRouterLink, useLocation } from 'react-router-dom'
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
-import Questions from "./Questions"
-import { useSelector } from "react-redux"
+import { Box, Button, HStack, Image, Tab, TabList, Tabs, Text } from "@chakra-ui/react"
+import { Navigate, Outlet, useNavigate } from 'react-router-dom'
 import { useAuth } from "../AuthContext"
 
-function Root() {
+function Home() {
 
 
-    const { user: authenticatedUser } = useAuth()
-
-    console.log(authenticatedUser)
-
-    if (authenticatedUser == null) {
-        return <Navigate to="/Login" />
-    }
+    const { user: authenticatedUser, logout } = useAuth()
+    const navigate = useNavigate()
 
 
     return (
@@ -24,16 +16,21 @@ function Root() {
             <HStack m="5px" spacing={2}>
                 <Image src={authenticatedUser.avatarURL} boxSize="10" />
                 <Text>{authenticatedUser.id}</Text>
-                <ChakraLink as={ReactRouterLink} to='/'>
+                <Button onClick={() => {
+
+                    logout()
+                    navigate("/")
+
+                }}>
                     Logout
-                </ChakraLink>
+                </Button>
 
             </HStack>
 
 
-            <Tabs>
+            <Tabs mb="5">
                 <TabList>
-                    <Tab >Questions</Tab>
+                    <Tab onClick={() => navigate("/questions")}>Questions</Tab>
                     <Tab>Leaderbord</Tab>
                     <Tab>New</Tab>
                 </TabList>
@@ -51,7 +48,9 @@ function Root() {
                         <p>New</p>
                     </TabPanel>
                 </TabPanels> */}
+
             </Tabs>
+
             <Outlet />
 
 
@@ -60,4 +59,4 @@ function Root() {
 
 }
 
-export default Root
+export default Home

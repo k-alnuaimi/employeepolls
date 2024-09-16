@@ -3,17 +3,24 @@ import Question from "../components/Question"
 import { useSelector } from "react-redux"
 import TitleText from "../components/TitleText"
 import { useAuth } from "../AuthContext"
+import { useEffect } from "react"
 
 function Questions() {
     /* const authenticatedUser = useSelector((state) => state.users.users[authenticatedUser]) */
     const { user: authenticatedUser } = useAuth()
-    console.log(authenticatedUser)
     const allQuestions = useSelector((state) => state.questions.questions)
+
+    console.log(allQuestions)
+    console.log(authenticatedUser)
     const newQuestions = Object.values(allQuestions).filter(question => !Object.keys(authenticatedUser.answers).includes(question.id))
     const answeredQuestions = Object.values(allQuestions).filter(question => Object.keys(authenticatedUser.answers).includes(question.id))
-    return <Box gap="10px" display="flex" flexDir="column">
 
-        <Box borderRadius="5px" borderWidth="1px" borderColor="gray" p="30px" pt="5px">
+
+
+
+    return <Box gap="10px" display="flex" flexDir="column" w="95%" >
+
+        <Box borderRadius="5px" borderWidth="1px" borderColor="gray" p="30px" pt="5px" >
 
             <TitleText >New Questions</TitleText>
             <Divider w="100%" mb="40px" />

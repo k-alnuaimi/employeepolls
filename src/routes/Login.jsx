@@ -5,7 +5,6 @@ import { ChevronDownIcon } from '@chakra-ui/icons'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { login } from '../features/usersSlice'
 import { useAuth } from '../AuthContext'
 
 
@@ -34,7 +33,8 @@ function Login() {
     } else {
       login(selectedUser)
       setLoginErrorMessageVisible(false)
-      navigate("/", { replace: true })
+      console.log("a")
+      navigate("/questions", { replace: true })
 
     }
 

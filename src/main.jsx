@@ -3,17 +3,15 @@ import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux'
 import {
   createBrowserRouter,
-  Navigate,
-  redirect,
   RouterProvider
 } from "react-router-dom"
-import Login from './routes/Login.jsx'
-import Root from './routes/Root.jsx'
-import store from './store.js'
-import Questions from './routes/Questions.jsx'
 import { AuthProvider } from './AuthContext.jsx'
-import { path } from 'framer-motion/client'
+import Home from './routes/Home.jsx'
+import Login from './routes/Login.jsx'
 import QuestionDetails from './routes/QuestionDetails.jsx'
+import Questions from './routes/Questions.jsx'
+import store from './store.js'
+import PrivateRoutes from './utils/PrivateRoutes.jsx'
 
 
 const router = createBrowserRouter([
@@ -24,28 +22,26 @@ const router = createBrowserRouter([
   },
   {
     path: "/",
-    element: <Root />,
+    element: <Login />,
+  },
+  {
+    element: <PrivateRoutes />,
     children: [
-
       {
-        index: true,
-        loader: () => redirect("/questions")
-
-      },
-
-      {
-
-        path: "/questions",
-        element: <Questions />,
-        children: [{
-          path: ":question_id",
-          element: <QuestionDetails />
-        }
+        element: <Home />,
+        children: [
+          {
+            path: "/questions",
+            element: <Questions />,
+            index: true
+          }, {
+            path: "/questions/:question_id",
+            element: <QuestionDetails />
+          }
 
         ]
 
-
-      },
+      }
 
 
     ]
