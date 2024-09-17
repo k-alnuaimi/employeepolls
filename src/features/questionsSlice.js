@@ -79,6 +79,8 @@ const initialState = {
     }
   }
 },
+  answeredQuestions:[],
+  newQuestions:[],
 };
 
 export const questionSlice = createSlice({
@@ -91,12 +93,16 @@ export const questionSlice = createSlice({
         ...state.questions,
         [formattedQuestion.id]: formattedQuestion
       }
+      state.newQuestions ={
+        ...state.newQuestions,[formattedQuestion.id]: formattedQuestion
+      }
+      
+      
     },
     saveQuestionAnswer: (state, action) => {
 
       const {qid,answer,authedUser} = action.payload
 
-      console.log(qid,answer,authedUser)
      
 
       state.questions = {
@@ -109,9 +115,14 @@ export const questionSlice = createSlice({
           }
         }
       }
+    }, setAnsweredQuestions :(state,action)=>{
+      state.answeredQuestions = action.payload
 
-      console.log(state.questions)
-    },
+    }, setNewQuestions :(state,action)=>{
+      state.newQuestions = action.payload
+      
+    }
+
 
     
   },
@@ -137,6 +148,6 @@ function formatQuestion ({ optionOneText, optionTwoText, author }) {
   }
 }
 
-export const { saveQuestion, saveQuestionAnswer} = questionSlice.actions;
+export const { saveQuestion, saveQuestionAnswer,setAnsweredQuestions,setNewQuestions} = questionSlice.actions;
 
 export default questionSlice.reducer;

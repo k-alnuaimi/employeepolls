@@ -10,13 +10,11 @@ function Questions() {
     const { user: authenticatedUser } = useAuth()
     const allQuestions = useSelector((state) => state.questions.questions)
 
+
+    const newQuestions = useSelector((state) => state.questions.newQuestions)  /* Object.values(allQuestions).filter(question => !Object.keys(authenticatedUser.answers).includes(question.id)) */
+    const answeredQuestions = useSelector((state) => state.questions.answeredQuestions) /* Object.values(allQuestions).filter(question => Object.keys(authenticatedUser.answers).includes(question.id)) */
+
     console.log(allQuestions)
-    console.log(authenticatedUser)
-    const newQuestions = Object.values(allQuestions).filter(question => !Object.keys(authenticatedUser.answers).includes(question.id))
-    const answeredQuestions = Object.values(allQuestions).filter(question => Object.keys(authenticatedUser.answers).includes(question.id))
-
-
-
 
     return <Box gap="10px" display="flex" flexDir="column" w="95%" >
 

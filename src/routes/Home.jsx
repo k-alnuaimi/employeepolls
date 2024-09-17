@@ -31,8 +31,8 @@ function Home() {
             <Tabs mb="5">
                 <TabList>
                     <Tab onClick={() => navigate("/questions")}>Questions</Tab>
-                    <Tab>Leaderbord</Tab>
-                    <Tab>New</Tab>
+                    <Tab onClick={() => navigate("/leaderboard")}>Leaderbord</Tab>
+                    <Tab onClick={() => navigate("/add")}>New</Tab>
                 </TabList>
 
 

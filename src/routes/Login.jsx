@@ -6,6 +6,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { useAuth } from '../AuthContext'
+import { setAnsweredQuestions, setNewQuestions } from '../features/questionsSlice'
 
 
 
@@ -15,9 +16,11 @@ function Login() {
   const { login } = useAuth()
 
   const usersArr = /* Object.values(users) */ Object.values(useSelector((state) => state.users.users))
+  const allQuestions = useSelector((state) => state.questions.questions)
   const [selectedUser, setSelectedUser] = useState("")
   const [loginErrorMessageVisible, setLoginErrorMessageVisible] = useState(false)
   const navigate = useNavigate();
+  const dispatch = useDispatch()
 
 
   const onChangeUser = (e) => {
@@ -32,8 +35,11 @@ function Login() {
       setLoginErrorMessageVisible(true)
     } else {
       login(selectedUser)
+      const newQuestions = Object.values(allQuestions).filter(question => !Object.keys(selectedUser.answers).includes(question.id))
+      const answeredQuestions = Object.values(allQuestions).filter(question => Object.keys(selectedUser.answers).includes(question.id))
+      dispatch(setAnsweredQuestions(answeredQuestions))
+      dispatch(setNewQuestions(newQuestions))
       setLoginErrorMessageVisible(false)
-      console.log("a")
       navigate("/questions", { replace: true })
 
     }

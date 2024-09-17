@@ -6,7 +6,7 @@ const QuestionOptionBox = ({ questionOption, user, noOfUsers, isAnswered, handle
 
     const showQuestionOptions = () => {
 
-        console.log(isAnswered)
+        (isAnswered)
 
         if (questionOption.votes.includes(user.id)) {
             return <Text>You chose this option</Text>

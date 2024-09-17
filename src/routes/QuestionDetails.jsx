@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useAuth } from "../AuthContext";
 import QuestionOptionBox from "../components/QuestionBox";
-import { saveQuestionAnswer } from "../features/questionsSlice";
+import { saveQuestionAnswer, setAnsweredQuestions, setNewQuestions } from "../features/questionsSlice";
 import { saveUserAnswer } from "../features/usersSlice";
 
 
@@ -12,6 +12,8 @@ const QuestionDetails = () => {
     const { question_id } = useParams();
     const { user, login } = useAuth()
     const questions = useSelector((state) => state.questions.questions)
+    const answeredQuestions = useSelector((state) => state.questions.answeredQuestions)
+    const newQuestions = useSelector((state) => state.questions.newQuestions)
     const allUsers = useSelector((state) => state.users.users)
     const noOfUsers = Object.keys(allUsers).length
     const question = questions[question_id]
@@ -23,6 +25,9 @@ const QuestionDetails = () => {
 
         dispatch(saveQuestionAnswer({ qid: question_id, answer: option, authedUser: user.id }))
         dispatch(saveUserAnswer({ qid: question_id, answer: option, authedUser: user.id }))
+
+        dispatch(setAnsweredQuestions([...answeredQuestions, questions[question_id]]))
+        dispatch(setNewQuestions(newQuestions.filter(q => q.id != question_id)))
         login(allUsers[user.id])
 
     }

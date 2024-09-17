@@ -12,6 +12,8 @@ import QuestionDetails from './routes/QuestionDetails.jsx'
 import Questions from './routes/Questions.jsx'
 import store from './store.js'
 import PrivateRoutes from './utils/PrivateRoutes.jsx'
+import Leaderbord from './routes/Leaderboard.jsx'
+import NewQuestion from './routes/NewQuestion.jsx'
 
 
 const router = createBrowserRouter([
@@ -37,7 +39,13 @@ const router = createBrowserRouter([
           }, {
             path: "/questions/:question_id",
             element: <QuestionDetails />
-          }
+          }, {
+            path: "/leaderboard",
+            element: <Leaderbord />
+          }, {
+            path: "/add",
+            element: <NewQuestion />
+          },
 
         ]
 

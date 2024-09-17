@@ -47,7 +47,6 @@ export const usersSlice = createSlice({
     saveUserAnswer: (state, action) => {
 
         const {authedUser,qid,answer} = action.payload
-        console.log(authedUser,qid,answer)
         state.users = {
           ...state.users,
           [authedUser]: {
@@ -57,12 +56,21 @@ export const usersSlice = createSlice({
               [qid]: answer
             }
           }
-        }
+        }  
+     
+      },saveUserQuestion: (state, action) => {
 
-        console.log(state.users)
-
-        
-  
+        const {question_id} = action.payload
+        state.users = {
+          ...state.users,
+          [authedUser]: {
+            ...state.users[authedUser],
+            questions: [
+              ...state.users[authedUser].questions,
+              question_id
+          ]
+          }
+        }  
      
       }
     
@@ -72,5 +80,5 @@ export const usersSlice = createSlice({
 
 
 
-export const {saveUserAnswer} = usersSlice.actions
+export const {saveUserAnswer,saveUserQuestion} = usersSlice.actions
 export default usersSlice.reducer;

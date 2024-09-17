@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 const AuthContext = createContext(null);
 
@@ -7,7 +8,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
-    console.log(storedUser)
+    (storedUser)
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     }
@@ -16,9 +17,9 @@ export const AuthProvider = ({ children }) => {
 
 
   const login = (user) => {
-
     setUser(user);
     localStorage.setItem('user', JSON.stringify(user));
+
   };
 
   const logout = () => {
