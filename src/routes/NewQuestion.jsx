@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { saveQuestion } from "../features/questionsSlice";
 import { useAuth } from "../AuthContext";
 import { saveUserQuestion } from "../features/usersSlice";
+import { useNavigate } from "react-router-dom";
 
 
 const NewQuestion = () => {
@@ -12,10 +13,12 @@ const NewQuestion = () => {
     const [secondOption, setSecondOption] = useState("")
     const { user } = useAuth()
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const handleSubmit = () => {
         dispatch(saveQuestion({ optionOneText: firstOption, optionTwoText: secondOption, author: user.id }))
         //dispatch(saveUserQuestion())
+        navigate("/questions")
 
 
     }
