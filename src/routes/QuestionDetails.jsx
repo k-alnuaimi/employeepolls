@@ -3,18 +3,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useAuth } from "../AuthContext";
 import QuestionOptionBox from "../components/QuestionBox";
-import { saveQuestionAnswer, setAnsweredQuestions, setNewQuestions } from "../features/questionsSlice";
-import { saveUserAnswer } from "../features/usersSlice";
+import { saveQuestionAnswer, setAnsweredQuestions, setNewQuestions, saveUserAnswer } from "../features/pollsSlice";
 
 
 const QuestionDetails = () => {
 
     const { question_id } = useParams();
     const { user, login } = useAuth()
-    const questions = useSelector((state) => state.questions.questions)
-    const answeredQuestions = useSelector((state) => state.questions.answeredQuestions)
-    const newQuestions = useSelector((state) => state.questions.newQuestions)
-    const allUsers = useSelector((state) => state.users.users)
+    const questions = useSelector((state) => state.polls.questions)
+    const answeredQuestions = useSelector((state) => state.polls.answeredQuestions)
+    const newQuestions = useSelector((state) => state.polls.newQuestions)
+    const allUsers = useSelector((state) => state.polls.users)
     const noOfUsers = Object.keys(allUsers).length
     const question = questions[question_id]
     const isAnswered = question.optionOne.votes.includes(user.id) || question.optionTwo.votes.includes(user.id)
@@ -29,7 +28,6 @@ const QuestionDetails = () => {
         dispatch(setAnsweredQuestions([...answeredQuestions, questions[question_id]]))
         console.log(newQuestions)
         dispatch(setNewQuestions(newQuestions.filter(q => q.id != question_id)))
-        login(allUsers[user.id])
 
     }
 

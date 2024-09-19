@@ -1,10 +1,9 @@
 import { Box, Button, Input, Text } from "@chakra-ui/react";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { saveQuestion } from "../features/questionsSlice";
-import { useAuth } from "../AuthContext";
-import { saveUserQuestion } from "../features/usersSlice";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../AuthContext";
+import { saveQuestion } from "../features/pollsSlice";
 
 
 const NewQuestion = () => {
@@ -17,7 +16,8 @@ const NewQuestion = () => {
     const navigate = useNavigate()
 
     const handleSubmit = () => {
-        const newQuestion = dispatch(saveQuestion({ optionOneText: firstOption, optionTwoText: secondOption, author: user.id }))
+        dispatch(saveQuestion({ optionOneText: firstOption, optionTwoText: secondOption, author: user.id }))
+        // you should save question to user here 
         navigate("/questions")
 
 

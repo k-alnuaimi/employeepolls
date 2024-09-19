@@ -81,11 +81,48 @@ const initialState = {
 },
   answeredQuestions:[],
   newQuestions:[],
-  lastCreatedQuestion : {}
+  users: {
+    sarahedo: {
+        id: 'sarahedo',
+        password:'password123',
+        name: 'Sarah Edo',
+        avatarURL: "https://img.icons8.com/?size=100&id=20748&format=png&color=000000",
+        answers: {
+          "8xf0y6ziyjabvozdd253nd": 'optionOne',
+          "6ni6ok3ym7mf1p33lnez": 'optionOne',
+          "am8ehyc8byjqgar0jgpub9": 'optionTwo',
+          "loxhs1bqm25b708cmbf3g": 'optionTwo'
+        },
+        questions: ['8xf0y6ziyjabvozdd253nd', 'am8ehyc8byjqgar0jgpub9']
+      },
+      tylermcginnis: {
+        id: 'tylermcginnis',
+        password:'abc321',
+        name: 'Tyler McGinnis',
+        avatarURL: "https://img.icons8.com/?size=100&id=108296&format=png&color=000000",
+        answers: {
+          "vthrdm985a262al8qx3do": 'optionOne',
+          "xj352vofupe1dqz9emx13r": 'optionTwo',
+        },
+        questions: ['loxhs1bqm25b708cmbf3g', 'vthrdm985a262al8qx3do'],
+      },
+      mtsamis: {
+        id: 'mtsamis',
+        password:'xyz123',
+        name: 'Mike Tsamis',
+        avatarURL: "https://img.icons8.com/?size=100&id=23243&format=png&color=000000",
+        answers: {
+          "xj352vofupe1dqz9emx13r": 'optionOne',
+          "vthrdm985a262al8qx3do": 'optionTwo',
+          "6ni6ok3ym7mf1p33lnez": 'optionOne'
+        },
+        questions: ['6ni6ok3ym7mf1p33lnez', 'xj352vofupe1dqz9emx13r'],
+      }
+  },
 };
 
-export const questionSlice = createSlice({
-  name: "questions",
+export const pollsSlice = createSlice({
+  name: "polls",
   initialState,
   reducers: {
     saveQuestion: (state, action) => {
@@ -96,7 +133,17 @@ export const questionSlice = createSlice({
       }
       state.newQuestions.push(formattedQuestion)
       state.newQuestions.sort((a,b)=>b.timestamp-a.timestamp)
-      state.lastCreatedQuestion = formattedQuestion
+
+      state.users = {
+        ...state.users,
+        [formattedQuestion.author]: {
+          ...state.users[formattedQuestion.author],
+          questions: [
+            ...state.users[formattedQuestion.author].questions,
+            formattedQuestion.id
+        ]
+        }
+      }  
       
     },
     saveQuestionAnswer: (state, action) => {
@@ -123,11 +170,22 @@ export const questionSlice = createSlice({
       state.newQuestions = action.payload
       state.newQuestions.sort((a,b)=>b.timestamp-a.timestamp)
     }
+, saveUserAnswer: (state, action) => {
 
-
-    
-  },
-});
+    const {authedUser,qid,answer} = action.payload
+    state.users = {
+      ...state.users,
+      [authedUser]: {
+        ...state.users[authedUser],
+        answers: {
+          ...state.users[authedUser].answers,
+          [qid]: answer
+        }
+      }
+    }  
+ 
+  }
+}});
 
 function generateUID () {
   return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
@@ -149,6 +207,6 @@ function formatQuestion ({ optionOneText, optionTwoText, author }) {
   }
 }
 
-export const { saveQuestion, saveQuestionAnswer,setAnsweredQuestions,setNewQuestions} = questionSlice.actions;
+export const {saveQuestion, saveQuestionAnswer,setAnsweredQuestions,setNewQuestions,saveUserQuestion,saveUserAnswer} = pollsSlice.actions;
 
-export default questionSlice.reducer;
+export default pollsSlice.reducer;

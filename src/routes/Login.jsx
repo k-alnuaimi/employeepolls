@@ -6,7 +6,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { useAuth } from '../AuthContext'
-import { setAnsweredQuestions, setNewQuestions } from '../features/questionsSlice'
+import { setAnsweredQuestions, setNewQuestions } from '../features/pollsSlice'
 
 
 
@@ -15,8 +15,8 @@ function Login() {
 
   const { login } = useAuth()
 
-  const usersArr = /* Object.values(users) */ Object.values(useSelector((state) => state.users.users))
-  const allQuestions = useSelector((state) => state.questions.questions)
+  const usersArr = /* Object.values(users) */ Object.values(useSelector((state) => state.polls.users))
+  const allQuestions = useSelector((state) => state.polls.questions)
   const [selectedUser, setSelectedUser] = useState("")
   const [loginErrorMessageVisible, setLoginErrorMessageVisible] = useState(false)
   const navigate = useNavigate();

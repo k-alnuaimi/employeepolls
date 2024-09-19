@@ -1,12 +1,11 @@
-import { combineSlices, configureStore } from "@reduxjs/toolkit";
-import questionsReducer from "./features/questionsSlice";
-import usersReducer from "./features/usersSlice";
+import { configureStore } from "@reduxjs/toolkit";
+import pollsSlice from "./features/pollsSlice";
 
 
 const store = configureStore({
   reducer: {
-    questions:questionsReducer,
-    users:usersReducer,
+
+    polls:pollsSlice
   },
 });
 

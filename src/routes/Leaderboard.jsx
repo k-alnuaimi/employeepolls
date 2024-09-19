@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 const Leaderbord = () => {
 
-    const users = Object.values(useSelector(state => state.users.users))
+    const users = Object.values(useSelector(state => state.polls.users))
     console.log(users)
 
     users.sort((a, b) => {
@@ -18,9 +18,9 @@ const Leaderbord = () => {
             <Table variant="simple">
                 <TableCaption>Leaderboard</TableCaption>
                 <Thead>
-                    <Tr>
-                        <Th>Users</Th>
-                        <Th isNumeric>Answered</Th>
+                    <Tr >
+                        <Th >Users</Th>
+                        <Th isNumeric >Answered</Th>
                         <Th isNumeric>Created</Th>
                     </Tr>
                 </Thead>
