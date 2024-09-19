@@ -1,4 +1,4 @@
-import { Table, TableCaption, TableContainer, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
+import { Image, Table, TableCaption, TableContainer, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 
 
@@ -30,7 +30,7 @@ const Leaderbord = () => {
                         users.map(user => {
 
                             return <Tr key={user.id}>
-                                <Td>{user.id}</Td>
+                                <Td>  <Image src={user.avatarURL} boxSize="10" />{user.id}</Td>
                                 <Td>{Object.keys(user.answers).length}</Td>
                                 <Td>{user.questions.length}</Td>
 

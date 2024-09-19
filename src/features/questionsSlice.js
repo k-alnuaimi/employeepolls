@@ -81,6 +81,7 @@ const initialState = {
 },
   answeredQuestions:[],
   newQuestions:[],
+  lastCreatedQuestion : {}
 };
 
 export const questionSlice = createSlice({
@@ -93,10 +94,9 @@ export const questionSlice = createSlice({
         ...state.questions,
         [formattedQuestion.id]: formattedQuestion
       }
-      state.newQuestions ={
-        ...state.newQuestions,[formattedQuestion.id]: formattedQuestion
-      }
-      
+      state.newQuestions.push(formattedQuestion)
+      state.newQuestions.sort((a,b)=>b.timestamp-a.timestamp)
+      state.lastCreatedQuestion = formattedQuestion
       
     },
     saveQuestionAnswer: (state, action) => {
@@ -117,10 +117,11 @@ export const questionSlice = createSlice({
       }
     }, setAnsweredQuestions :(state,action)=>{
       state.answeredQuestions = action.payload
+      state.answeredQuestions.sort((a,b)=>b.timestamp-a.timestamp)
 
     }, setNewQuestions :(state,action)=>{
       state.newQuestions = action.payload
-      
+      state.newQuestions.sort((a,b)=>b.timestamp-a.timestamp)
     }
 
 

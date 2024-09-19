@@ -1,6 +1,6 @@
 import { Box, Button, Input, Text } from "@chakra-ui/react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { saveQuestion } from "../features/questionsSlice";
 import { useAuth } from "../AuthContext";
 import { saveUserQuestion } from "../features/usersSlice";
@@ -13,11 +13,11 @@ const NewQuestion = () => {
     const [secondOption, setSecondOption] = useState("")
     const { user } = useAuth()
     const dispatch = useDispatch()
+
     const navigate = useNavigate()
 
     const handleSubmit = () => {
-        dispatch(saveQuestion({ optionOneText: firstOption, optionTwoText: secondOption, author: user.id }))
-        //dispatch(saveUserQuestion())
+        const newQuestion = dispatch(saveQuestion({ optionOneText: firstOption, optionTwoText: secondOption, author: user.id }))
         navigate("/questions")
 
 

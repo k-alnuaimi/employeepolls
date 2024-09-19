@@ -27,6 +27,7 @@ const QuestionDetails = () => {
         dispatch(saveUserAnswer({ qid: question_id, answer: option, authedUser: user.id }))
 
         dispatch(setAnsweredQuestions([...answeredQuestions, questions[question_id]]))
+        console.log(newQuestions)
         dispatch(setNewQuestions(newQuestions.filter(q => q.id != question_id)))
         login(allUsers[user.id])
 

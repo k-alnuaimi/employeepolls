@@ -6,7 +6,6 @@ const QuestionOptionBox = ({ questionOption, user, noOfUsers, isAnswered, handle
 
     const showQuestionOptions = () => {
 
-        (isAnswered)
 
         if (questionOption.votes.includes(user.id)) {
             return <Text>You chose this option</Text>
@@ -29,7 +28,9 @@ const QuestionOptionBox = ({ questionOption, user, noOfUsers, isAnswered, handle
 
 
     return (
-        <Box maxWidth="400px" borderWidth="1px" borderRadius="lg" overflow="hidden" p={1}>
+        <Box maxWidth="400px" borderWidth="1px" borderRadius="lg" overflow="hidden" p={1} backgroundColor={
+            questionOption.votes.includes(user.id) ? "green.100" : "white"
+        }>
             <Text
                 p={4}
                 fontWeight="bold"

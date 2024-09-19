@@ -1,4 +1,4 @@
-import { Box, ChakraProvider } from '@chakra-ui/react'
+import { Box, Center, ChakraProvider, Text } from '@chakra-ui/react'
 import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux'
 import {
@@ -14,20 +14,30 @@ import store from './store.js'
 import PrivateRoutes from './utils/PrivateRoutes.jsx'
 import Leaderbord from './routes/Leaderboard.jsx'
 import NewQuestion from './routes/NewQuestion.jsx'
+const ErrorBoundary = () => {
+
+  return <Center>
+    <Text>404 Not Found</Text>
+  </Center>
+
+}
 
 
 const router = createBrowserRouter([
   {
     path: "/Login",
     element: <Login />,
-    index: true
+    index: true,
+    errorElement: <ErrorBoundary />,
   },
   {
     path: "/",
     element: <Login />,
+    errorElement: <ErrorBoundary />,
   },
   {
     element: <PrivateRoutes />,
+    errorElement: <ErrorBoundary />,
     children: [
       {
         element: <Home />,
@@ -55,6 +65,7 @@ const router = createBrowserRouter([
     ]
   },
 ]);
+
 
 
 
