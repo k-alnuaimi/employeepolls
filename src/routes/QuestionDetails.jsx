@@ -1,15 +1,15 @@
-import { Box, Button, HStack, Text, VStack } from "@chakra-ui/react";
+import { Box, HStack, Text } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useAuth } from "../AuthContext";
 import QuestionOptionBox from "../components/QuestionBox";
-import { saveQuestionAnswer, setAnsweredQuestions, setNewQuestions, saveUserAnswer } from "../features/pollsSlice";
+import { saveQuestionAnswer, saveUserAnswer, setAnsweredQuestions, setNewQuestions } from "../features/pollsSlice";
 
 
 const QuestionDetails = () => {
 
     const { question_id } = useParams();
-    const { user, login } = useAuth()
+    const { user } = useAuth()
     const questions = useSelector((state) => state.polls.questions)
     const answeredQuestions = useSelector((state) => state.polls.answeredQuestions)
     const newQuestions = useSelector((state) => state.polls.newQuestions)
