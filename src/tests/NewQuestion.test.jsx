@@ -1,35 +1,38 @@
-import { render, screen } from "@testing-library/react";
-import { createMemoryRouter, RouterProvider } from "react-router-dom";
-import { describe, it } from "vitest";
-import routesConfig from "../routes/routesConfig";
-import { AuthProvider } from "../AuthContext";
-import { Provider } from "react-redux";
-import { Box, ChakraProvider } from "@chakra-ui/react";
-import store from "../store";
+import { describe, expect } from "vitest"
+import { useAuth } from "../AuthContext"
+import { createMemoryRouter } from "react-router-dom"
+import routesConfig from "../routes/routesConfig"
+import { fireEvent, getByRole, render, screen } from "@testing-library/react"
+import Providers from "../utils/Providers"
+import store from "../store"
 
 
 
-
-describe('Questions', () => {
-  it('render Questions component', async () => {
-
+describe('NewQuestion', () => {
     const router = createMemoryRouter(routesConfig, {
-      initialEntries: ["/questions"]
+        initialEntries: ["/add"]
     })
 
-    render(<AuthProvider>
-      <Provider store={store}>
-        <ChakraProvider>
-          <Box minH="100vh">
-            <RouterProvider router={router} />
 
-          </Box>
-        </ChakraProvider>
-      </Provider>
-    </AuthProvider>)
-    screen.debug()
+    it('New Question', () => {
 
-  })
+
+
+        render(<Providers router={router} store={store} />)
+
+        const btn = screen.getByRole("button", { name: "Login" })
+        const sarahedoOption = screen.getByRole("option", { name: "sarahedo" })
+        const selectElement = screen.getByDisplayValue("Select a user")
+        expect(btn).toBeInTheDocument()
+        fireEvent.change(selectElement, { target: { value: 2 } })
+        screen.debug()
+        // expect(sarahedoOption.selected).toBe(true)
+
+    })
+
+
+
+
+
 
 })
-

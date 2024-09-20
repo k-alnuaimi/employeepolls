@@ -1,3 +1,4 @@
+import { Center, Text } from "@chakra-ui/react";
 import PrivateRoutes from "../utils/PrivateRoutes";
 import Home from "./Home";
 import Leaderbord from "./Leaderboard";

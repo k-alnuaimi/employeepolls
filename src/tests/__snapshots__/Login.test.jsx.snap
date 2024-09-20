@@ -1,0 +1,246 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Login > maching snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body
+    class="chakra-ui-light"
+  >
+    <div>
+      <div
+        class="css-vooagt"
+      >
+        <div
+          class="css-0"
+        >
+          <div
+            class="chakra-stack css-tl3ftk"
+          >
+            <div
+              class="chakra-select__wrapper css-12offb1"
+            >
+              <select
+                class="chakra-select css-161pkch"
+              >
+                <option
+                  value=""
+                >
+                  Select a user
+                </option>
+                <option
+                  value="sarahedo"
+                >
+                  sarahedo
+                </option>
+                <option
+                  value="tylermcginnis"
+                >
+                  tylermcginnis
+                </option>
+                <option
+                  value="mtsamis"
+                >
+                  mtsamis
+                </option>
+              </select>
+              <div
+                class="chakra-select__icon-wrapper css-iohxn1"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="chakra-icon chakra-select__icon css-onkibi"
+                  focusable="false"
+                  role="presentation"
+                  style="width: 1em; height: 1em; color: currentColor;"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+            </div>
+            <button
+              class="chakra-button css-ez23ye"
+              type="button"
+            >
+              Login
+            </button>
+          </div>
+        </div>
+      </div>
+      <span
+        hidden=""
+        id="__chakra_env"
+      />
+    </div>
+    <div
+      class="chakra-portal"
+    >
+      <div
+        aria-label="Notifications-top"
+        aria-live="polite"
+        id="chakra-toast-manager-top"
+        role="region"
+        style="position: fixed; z-index: var(--toast-z-index, 5500); pointer-events: none; display: flex; flex-direction: column; margin: 0px auto;"
+      />
+      <div
+        aria-label="Notifications-top-left"
+        aria-live="polite"
+        id="chakra-toast-manager-top-left"
+        role="region"
+        style="position: fixed; z-index: var(--toast-z-index, 5500); pointer-events: none; display: flex; flex-direction: column;"
+      />
+      <div
+        aria-label="Notifications-top-right"
+        aria-live="polite"
+        id="chakra-toast-manager-top-right"
+        role="region"
+        style="position: fixed; z-index: var(--toast-z-index, 5500); pointer-events: none; display: flex; flex-direction: column;"
+      />
+      <div
+        aria-label="Notifications-bottom-left"
+        aria-live="polite"
+        id="chakra-toast-manager-bottom-left"
+        role="region"
+        style="position: fixed; z-index: var(--toast-z-index, 5500); pointer-events: none; display: flex; flex-direction: column;"
+      />
+      <div
+        aria-label="Notifications-bottom"
+        aria-live="polite"
+        id="chakra-toast-manager-bottom"
+        role="region"
+        style="position: fixed; z-index: var(--toast-z-index, 5500); pointer-events: none; display: flex; flex-direction: column; margin: 0px auto;"
+      />
+      <div
+        aria-label="Notifications-bottom-right"
+        aria-live="polite"
+        id="chakra-toast-manager-bottom-right"
+        role="region"
+        style="position: fixed; z-index: var(--toast-z-index, 5500); pointer-events: none; display: flex; flex-direction: column;"
+      />
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="css-vooagt"
+    >
+      <div
+        class="css-0"
+      >
+        <div
+          class="chakra-stack css-tl3ftk"
+        >
+          <div
+            class="chakra-select__wrapper css-12offb1"
+          >
+            <select
+              class="chakra-select css-161pkch"
+            >
+              <option
+                value=""
+              >
+                Select a user
+              </option>
+              <option
+                value="sarahedo"
+              >
+                sarahedo
+              </option>
+              <option
+                value="tylermcginnis"
+              >
+                tylermcginnis
+              </option>
+              <option
+                value="mtsamis"
+              >
+                mtsamis
+              </option>
+            </select>
+            <div
+              class="chakra-select__icon-wrapper css-iohxn1"
+            >
+              <svg
+                aria-hidden="true"
+                class="chakra-icon chakra-select__icon css-onkibi"
+                focusable="false"
+                role="presentation"
+                style="width: 1em; height: 1em; color: currentColor;"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                  fill="currentColor"
+                />
+              </svg>
+            </div>
+          </div>
+          <button
+            class="chakra-button css-ez23ye"
+            type="button"
+          >
+            Login
+          </button>
+        </div>
+      </div>
+    </div>
+    <span
+      hidden=""
+      id="__chakra_env"
+    />
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
