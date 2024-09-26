@@ -22,7 +22,7 @@ function Questions() {
 
         <Switch defaultChecked onChange={() => setAnsweredCheck(!answeredCheck)}>Show Answered</Switch >
 
-        <Box borderRadius="5px" borderWidth="1px" borderColor="gray" p="30px" pt="5px" >
+        {!answeredCheck ? <Box borderRadius="5px" borderWidth="1px" borderColor="gray" p="30px" pt="5px" >
 
             <TitleText >New Questions</TitleText>
             <Divider w="100%" mb="40px" />
@@ -30,16 +30,15 @@ function Questions() {
             <SimpleGrid columns={4} >
                 {newQuestions.map(question => <Question question={question} key={question.id} />)}
             </SimpleGrid>
-        </Box>
-
-        {
-            answeredCheck && <Box borderRadius="5px" borderWidth="1px" borderColor="gray" p="30px" pt="5px">
+        </Box> :
+            <Box borderRadius="5px" borderWidth="1px" borderColor="gray" p="30px" pt="5px">
                 <TitleText>Done</TitleText>
                 <Divider w="100%" mb="40px" />
                 <SimpleGrid columns={4} >
                     {answeredQuestions.map(question => <Question question={question} key={question.id} />)}
                 </SimpleGrid>
             </Box>
+
         }
 
 

@@ -19,7 +19,6 @@ describe('Login', () => {
 
 
     render(<Providers router={router} store={store} />)
-    screen.debug()
     const btn = screen.getByRole("button", { name: "Login" })
     const selectAUser = screen.getByRole("option", { name: "Select a user" })
     expect(btn).toBeInTheDocument()
@@ -27,12 +26,12 @@ describe('Login', () => {
 
   })
 
-  /* it('maching snapshot', () => {
+  it('maching snapshot', () => {
 
     const loginPage = render(<Providers router={router} store={store} />)
     expect(loginPage).toMatchSnapshot()
 
-  }) */
+  })
 
 
 

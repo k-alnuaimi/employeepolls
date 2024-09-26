@@ -3,7 +3,7 @@ import { Box, Button, Select, Text, useRangeSlider, VStack } from '@chakra-ui/re
 import { ChevronDownIcon } from '@chakra-ui/icons'
 
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { useAuth } from '../AuthContext'
 import { setAnsweredQuestions, setNewQuestions } from '../features/pollsSlice'
@@ -21,6 +21,7 @@ function Login() {
   const [loginErrorMessageVisible, setLoginErrorMessageVisible] = useState(false)
   const navigate = useNavigate();
   const dispatch = useDispatch()
+  const { state } = useLocation()
 
 
   const onChangeUser = (e) => {
@@ -40,7 +41,7 @@ function Login() {
       dispatch(setAnsweredQuestions(answeredQuestions))
       dispatch(setNewQuestions(newQuestions))
       setLoginErrorMessageVisible(false)
-      navigate("/questions", { replace: true })
+      navigate(state?.path || "/questions", { replace: true })
 
     }
 

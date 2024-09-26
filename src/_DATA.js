@@ -201,3 +201,28 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
     }, 500)
   })
 }
+
+
+export const  _saveQuestionAnswer2 = ({qid,answer,authedUser}) => {
+
+  return new Promise((resolve, reject) => {
+    if (!authedUser || !qid || !answer) {
+      reject("Please provide authedUser, qid, and answer");
+    }
+
+    setTimeout(() => {
+      questions = {
+        ...questions,
+        [qid]: {
+          ...questions[qid],
+          [answer]: {
+            ...questions[qid][answer],
+            votes: questions[qid][answer].votes.concat([authedUser])
+          }
+        }
+      }
+
+      resolve(true)
+    }, 500)
+  })
+}

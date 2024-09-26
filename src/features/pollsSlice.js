@@ -126,7 +126,13 @@ export const pollsSlice = createSlice({
   initialState,
   reducers: {
     saveQuestion: (state, action) => {
-      const formattedQuestion = formatQuestion(action.payload)
+
+      const question = action.payload
+
+      if (!question.optionOneText || !question.optionTwoText || !question.author) {
+        throw new Error("Please provide optionOneText, optionTwoText, and author")
+      }
+      const formattedQuestion = formatQuestion(question)
       state.questions = {
         ...state.questions,
         [formattedQuestion.id]: formattedQuestion
@@ -149,9 +155,6 @@ export const pollsSlice = createSlice({
     saveQuestionAnswer: (state, action) => {
 
       const {qid,answer,authedUser} = action.payload
-
-     
-
       state.questions = {
         ...state.questions,
         [qid]: {

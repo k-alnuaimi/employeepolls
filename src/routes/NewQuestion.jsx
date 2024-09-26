@@ -17,7 +17,6 @@ const NewQuestion = () => {
 
     const handleSubmit = () => {
         dispatch(saveQuestion({ optionOneText: firstOption, optionTwoText: secondOption, author: user.id }))
-        // you should save question to user here 
         navigate("/questions")
 
 

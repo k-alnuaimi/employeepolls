@@ -53,7 +53,7 @@ function Home() {
             <Tabs mb="5" index={tabsIndex} variant="line" >
                 <TabList >
                     <Tab onClick={() => navigate("/questions")}>Questions</Tab>
-                    <Tab onClick={() => navigate("/leaderboard")}>Leaderbord</Tab>
+                    <Tab onClick={() => navigate("/leaderboard")}>Leaderboard</Tab>
                     <Tab onClick={() => navigate("/add")}>New</Tab>
                 </TabList>
 
